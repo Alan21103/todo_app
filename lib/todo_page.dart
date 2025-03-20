@@ -234,27 +234,28 @@ class _TodoPageState extends State<TodoPage> {
                     itemCount: listTugas.length,
                     itemBuilder: (context, index) {
                       return Card(
+                        color: Color.fromARGB(255, 209, 144, 225),
                         elevation: 2,
                         margin: EdgeInsets.symmetric(vertical: 7),
                         child: ListTile(
                           title: Text(
                             listTugas[index]['task'],
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                           ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Deadline: ${listTugas[index]['deadline']}',
-                                style: TextStyle(color: Colors.blueGrey),
+                                style: TextStyle(color: const Color.fromARGB(255, 0, 69, 103)),
                               ),
                               Text(
                                 listTugas[index]['done'] ? 'Done' : 'Not Done',
                                 style: TextStyle(
                                   color:
                                       listTugas[index]['done']
-                                          ? Colors.green
-                                          : Colors.red,
+                                          ? const Color.fromARGB(255, 0, 127, 4)
+                                          : const Color.fromARGB(255, 228, 33, 19),
                                 ),
                               ),
                             ],
