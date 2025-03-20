@@ -70,12 +70,12 @@ class _TodoPageState extends State<TodoPage> {
     }
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 136, 44, 193),
-    body: SafeArea(
-      child: Container(
+       backgroundColor: Color.fromARGB(255, 136, 44, 193),
+      body: SafeArea(
+        child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -83,22 +83,22 @@ class _TodoPageState extends State<TodoPage> {
               colors: [Color(0xFF6A1B9A), Color(0xFF8E24AA), Color(0xFFBA68C8)],
             ),
           ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0))
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Text(
-                'Form Page',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-              ),
-            ),
-            SizedBox(height: 20),
-            Form(
-              key: _key,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text(
+                    'Form Page',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Form(
+                  key: _key,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Task Date:',
@@ -168,7 +168,7 @@ class _TodoPageState extends State<TodoPage> {
                           ),
                           SizedBox(
                             width: 10,
-                          ),
+                          ), // Jarak antara TextFormField dan tombol Submit
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color.fromARGB(0, 83, 9, 96),
@@ -182,16 +182,65 @@ class _TodoPageState extends State<TodoPage> {
                               'Submit',
                               style: TextStyle(color: Colors.white),
                             ),
-                          ), // Jarak an
+                          ),
                         ],
                       ),
                     ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  'List Tasks',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: listTugas.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 2,
+                        margin: EdgeInsets.symmetric(vertical: 7),
+                        child: ListTile(
+                          title: Text(
+                            listTugas[index]['task'],
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Deadline: ${listTugas[index]['deadline']}',
+                                style: TextStyle(color: Colors.blueGrey),
+                              ),
+                              Text(
+                                listTugas[index]['done'] ? 'Done' : 'Not Done',
+                                style: TextStyle(
+                                  color:
+                                      listTugas[index]['done']
+                                          ? Colors.green
+                                          : Colors.red,
+                                ),
+                              ),
+                            ],
+                          ),
+                          trailing: Checkbox(
+                            value: listTugas[index]['done'],
+                            onChanged: (bool? value) {
+                              setState(() {
+                                listTugas[index]['done'] = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-              ),
-          ],
+          ),
         ),
       ),
-    ),
     );
   }
 }
