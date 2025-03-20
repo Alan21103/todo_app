@@ -15,8 +15,14 @@ class _TodoPageState extends State<TodoPage> {
 
   List<Map<String, dynamic>> listTugas = [];
 
+  String? _dateError;
+
   void addData() {
-    if (_key.currentState!.validate()) {
+    setState(() {
+      _dateError = _dateController.text.isEmpty ? 'Harap pilih tanggal' : null;
+    });
+
+    if (_key.currentState!.validate() && _dateError == null) {
       setState(() {
         listTugas.add({
           'task': _taskController.text,
@@ -25,9 +31,9 @@ class _TodoPageState extends State<TodoPage> {
         });
         _taskController.clear();
         _dateController.clear();
+        _dateError = null; // Reset error setelah sukses
       });
 
-      // Tampilkan Snackbar setelah task berhasil ditambahkan
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Task berhasil ditambahkan!'),
@@ -70,10 +76,10 @@ class _TodoPageState extends State<TodoPage> {
     }
   }
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color.fromARGB(255, 136, 44, 193),
+      backgroundColor: Color.fromARGB(255, 136, 44, 193),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -91,7 +97,11 @@ class _TodoPageState extends State<TodoPage> {
                 Center(
                   child: Text(
                     'Form Page',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -105,7 +115,7 @@ class _TodoPageState extends State<TodoPage> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white
+                          color: Colors.white,
                         ),
                       ),
                       Row(
@@ -148,7 +158,13 @@ class _TodoPageState extends State<TodoPage> {
                       ),
 
                       SizedBox(height: 10),
-                      Text('First Name', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                      Text(
+                        'First Name',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       Row(
                         children: [
                           Expanded(
@@ -160,8 +176,9 @@ class _TodoPageState extends State<TodoPage> {
                                 errorStyle: TextStyle(color: Colors.red),
                               ),
                               validator: (value) {
-                                if (value!.isEmpty)
+                                if (value!.isEmpty) {
                                   return 'Please enter some text';
+                                }
                                 return null;
                               },
                             ),
@@ -171,7 +188,12 @@ class _TodoPageState extends State<TodoPage> {
                           ), // Jarak antara TextFormField dan tombol Submit
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromARGB(0, 83, 9, 96),
+                              backgroundColor: const Color.fromARGB(
+                                0,
+                                83,
+                                9,
+                                96,
+                              ),
                               padding: EdgeInsets.symmetric(
                                 horizontal: 20,
                                 vertical: 18,
@@ -191,7 +213,11 @@ class _TodoPageState extends State<TodoPage> {
                 SizedBox(height: 20),
                 Text(
                   'List Tasks',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
                 Expanded(
                   child: ListView.builder(
