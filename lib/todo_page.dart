@@ -124,7 +124,6 @@ class _TodoPageState extends State<TodoPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 4),
                                 TextButton(
                                   onPressed: () => _selectDate(context),
                                   style: TextButton.styleFrom(
@@ -144,6 +143,17 @@ class _TodoPageState extends State<TodoPage> {
                                     ),
                                   ),
                                 ),
+                                if (_dateError != null)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 4),
+                                    child: Text(
+                                      _dateError!,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
