@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -79,7 +80,7 @@ class _TodoPageState extends State<TodoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 136, 44, 193),
+      backgroundColor: Color.fromARGB(255, 141, 38, 205),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -97,7 +98,7 @@ class _TodoPageState extends State<TodoPage> {
                 Center(
                   child: Text(
                     'Form Page',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -112,7 +113,7 @@ class _TodoPageState extends State<TodoPage> {
                     children: [
                       Text(
                         'Task Date:',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -131,15 +132,10 @@ class _TodoPageState extends State<TodoPage> {
                                     padding: EdgeInsets.zero,
                                   ),
                                   child: Text(
-                                    _dateController.text.isEmpty
-                                        ? 'Select a date'
-                                        : _dateController.text,
-                                    style: TextStyle(
+                                    _dateController.text.isEmpty ? 'Select a date' : _dateController.text,
+                                    style: GoogleFonts.poppins(
                                       fontSize: 16,
-                                      color:
-                                          _dateController.text.isEmpty
-                                              ? Colors.grey
-                                              : Colors.black,
+                                      color: _dateController.text.isEmpty ? Colors.grey : Colors.black,
                                     ),
                                   ),
                                 ),
@@ -148,7 +144,7 @@ class _TodoPageState extends State<TodoPage> {
                                     padding: const EdgeInsets.only(top: 4),
                                     child: Text(
                                       _dateError!,
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         color: Colors.red,
                                         fontSize: 12,
                                       ),
@@ -158,19 +154,15 @@ class _TodoPageState extends State<TodoPage> {
                             ),
                           ),
                           IconButton(
-                            icon: Icon(
-                              Icons.calendar_today,
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                            ),
+                            icon: Icon(Icons.calendar_today, color: Colors.white),
                             onPressed: () => _selectDate(context),
                           ),
                         ],
                       ),
-
                       SizedBox(height: 10),
                       Text(
                         'First Name',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -182,42 +174,32 @@ class _TodoPageState extends State<TodoPage> {
                               controller: _taskController,
                               decoration: InputDecoration(
                                 hintText: 'Enter your first name',
+                                hintStyle: GoogleFonts.poppins(color: Colors.grey.shade600),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8), // Tambahkan rounded corners
-                                  borderSide: BorderSide(color: Colors.black), // Warna border hitam
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide(color: Colors.black),
                                 ),
-                                errorStyle: TextStyle(color: Colors.red),
-                                filled: true, // Mengaktifkan warna latar belakang
-                                fillColor: const Color.fromARGB(168, 255, 255, 255),
+                                errorStyle: GoogleFonts.poppins(color: Colors.red),
+                                filled: true,
+                                fillColor: Color.fromARGB(168, 255, 255, 255),
                               ),
+                              style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter some text';
-                                }
+                                if (value!.isEmpty) return 'Please enter some text';
                                 return null;
                               },
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ), // Jarak antara TextFormField dan tombol Submit
+                          SizedBox(width: 10),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromARGB(
-                                0,
-                                83,
-                                9,
-                                96,
-                              ),
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 18,
-                              ),
+                              backgroundColor: const Color.fromARGB(255, 92, 7, 111),
+                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                             ),
                             onPressed: addData,
                             child: Text(
                               'Submit',
-                              style: TextStyle(color: Colors.white),
+                              style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -228,7 +210,7 @@ class _TodoPageState extends State<TodoPage> {
                 SizedBox(height: 20),
                 Text(
                   'List Tasks',
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -239,38 +221,25 @@ class _TodoPageState extends State<TodoPage> {
                     itemCount: listTugas.length,
                     itemBuilder: (context, index) {
                       return Card(
-                        color: Color.fromARGB(255, 209, 144, 225),
+                        color: Color(0xFFD190E1),
                         elevation: 2,
                         margin: EdgeInsets.symmetric(vertical: 7),
                         child: ListTile(
                           title: Text(
                             listTugas[index]['task'],
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
+                            style: GoogleFonts.poppins(fontWeight: FontWeight.bold, color: Colors.black),
                           ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Deadline: ${listTugas[index]['deadline']}',
-                                style: TextStyle(
-                                  color: const Color.fromARGB(255, 0, 69, 103),
-                                ),
+                                style: GoogleFonts.poppins(color: Color(0xFF004567)),
                               ),
                               Text(
                                 listTugas[index]['done'] ? 'Done' : 'Not Done',
-                                style: TextStyle(
-                                  color:
-                                      listTugas[index]['done']
-                                          ? const Color.fromARGB(255, 0, 127, 4)
-                                          : const Color.fromARGB(
-                                            255,
-                                            228,
-                                            33,
-                                            19,
-                                          ),
+                                style: GoogleFonts.poppins(
+                                  color: listTugas[index]['done'] ? Colors.green : Colors.red,
                                 ),
                               ),
                             ],
