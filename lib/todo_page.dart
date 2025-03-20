@@ -168,6 +168,20 @@ class _TodoPageState extends State<TodoPage> {
                           ),
                           SizedBox(
                             width: 10,
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color.fromARGB(0, 83, 9, 96),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 18,
+                              ),
+                            ),
+                            onPressed: addData,
+                            child: Text(
+                              'Submit',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ), // Jarak an
                         ],
                       ),
