@@ -182,7 +182,10 @@ class _TodoPageState extends State<TodoPage> {
                               controller: _taskController,
                               decoration: InputDecoration(
                                 hintText: 'Enter your first name',
-                                border: OutlineInputBorder(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8), // Tambahkan rounded corners
+                                  borderSide: BorderSide(color: Colors.black), // Warna border hitam
+                                ),
                                 errorStyle: TextStyle(color: Colors.red),
                                 filled: true, // Mengaktifkan warna latar belakang
                                 fillColor: const Color.fromARGB(168, 255, 255, 255),
