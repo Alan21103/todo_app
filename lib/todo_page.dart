@@ -83,7 +83,23 @@ class _TodoPageState extends State<TodoPage> {
               colors: [Color(0xFF6A1B9A), Color(0xFF8E24AA), Color(0xFFBA68C8)],
             ),
           ),
-      child: 
+      child: Padding(
+        padding: const EdgeInsets.all(16.0))
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                'Form Page',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+            SizedBox(height: 20),
+            Form(
+              key: _key,
+              child: Column(
+              ),)
+          ],)
       ),
     ),
     );
