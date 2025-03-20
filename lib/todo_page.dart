@@ -98,7 +98,56 @@ class _TodoPageState extends State<TodoPage> {
             Form(
               key: _key,
               child: Column(
-              ),)
+                crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Task Date:',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 4),
+                                TextButton(
+                                  onPressed: () => _selectDate(context),
+                                  style: TextButton.styleFrom(
+                                    alignment: Alignment.centerLeft,
+                                    padding: EdgeInsets.zero,
+                                  ),
+                                  child: Text(
+                                    _dateController.text.isEmpty
+                                        ? 'Select a date'
+                                        : _dateController.text,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color:
+                                          _dateController.text.isEmpty
+                                              ? Colors.grey
+                                              : Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.calendar_today,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                            ),
+                            onPressed: () => _selectDate(context),
+                          ),
+                        ],
+                      ),
+              ),
+              ),
           ],)
       ),
     ),
