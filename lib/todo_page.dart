@@ -132,11 +132,16 @@ class _TodoPageState extends State<TodoPage> {
                                     padding: EdgeInsets.zero,
                                   ),
                                   child: Text(
-                                    _dateController.text.isEmpty ? 'Select a date' : _dateController.text,
+                                    _dateController.text.isEmpty
+                                        ? 'Select a date'
+                                        : _dateController.text,
                                     style: GoogleFonts.poppins(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: _dateController.text.isEmpty ? Colors.grey : Colors.black,
+                                      color:
+                                          _dateController.text.isEmpty
+                                              ? Colors.grey
+                                              : Colors.black,
                                     ),
                                   ),
                                 ),
@@ -154,9 +159,36 @@ class _TodoPageState extends State<TodoPage> {
                               ],
                             ),
                           ),
-                          IconButton(
-                            icon: Icon(Icons.calendar_today, color: Colors.white),
-                            onPressed: () => _selectDate(context),
+                          Container(
+                            decoration: BoxDecoration(
+                              shape:
+                                  BoxShape
+                                      .circle, // Membuat tombol berbentuk lingkaran
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.purple,
+                                  Colors.deepPurpleAccent,
+                                ], // Gradasi warna
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                  blurRadius: 5,
+                                  offset: Offset(2, 4), // Efek bayangan
+                                ),
+                              ],
+                            ),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.calendar_today,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              onPressed: () => _selectDate(context),
+                              splashRadius: 30, // Efek klik lebih smooth
+                            ),
                           ),
                         ],
                       ),
@@ -175,18 +207,26 @@ class _TodoPageState extends State<TodoPage> {
                               controller: _taskController,
                               decoration: InputDecoration(
                                 hintText: 'Enter your first name',
-                                hintStyle: GoogleFonts.poppins(color: Colors.grey.shade600),
+                                hintStyle: GoogleFonts.poppins(
+                                  color: Colors.grey.shade600,
+                                ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(8),
                                   borderSide: BorderSide(color: Colors.black),
                                 ),
-                                errorStyle: GoogleFonts.poppins(color: Colors.red),
+                                errorStyle: GoogleFonts.poppins(
+                                  color: Colors.red,
+                                ),
                                 filled: true,
                                 fillColor: Color.fromARGB(168, 255, 255, 255),
                               ),
-                              style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
                               validator: (value) {
-                                if (value!.isEmpty) return 'Please enter some text';
+                                if (value!.isEmpty)
+                                  return 'Please enter some text';
                                 return null;
                               },
                             ),
@@ -194,13 +234,24 @@ class _TodoPageState extends State<TodoPage> {
                           SizedBox(width: 10),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromARGB(255, 92, 7, 111),
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                              backgroundColor: const Color.fromARGB(
+                                255,
+                                92,
+                                7,
+                                111,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 18,
+                              ),
                             ),
                             onPressed: addData,
                             child: Text(
                               'Submit',
-                              style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
@@ -228,19 +279,27 @@ class _TodoPageState extends State<TodoPage> {
                         child: ListTile(
                           title: Text(
                             listTugas[index]['task'],
-                            style: GoogleFonts.poppins(fontWeight: FontWeight.bold, color: Colors.black),
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Deadline: ${listTugas[index]['deadline']}',
-                                style: GoogleFonts.poppins(color: Color(0xFF004567)),
+                                style: GoogleFonts.poppins(
+                                  color: Color(0xFF004567),
+                                ),
                               ),
                               Text(
                                 listTugas[index]['done'] ? 'Done' : 'Not Done',
                                 style: GoogleFonts.poppins(
-                                  color: listTugas[index]['done'] ? Colors.green : Colors.red,
+                                  color:
+                                      listTugas[index]['done']
+                                          ? Colors.green
+                                          : Colors.red,
                                 ),
                               ),
                             ],
