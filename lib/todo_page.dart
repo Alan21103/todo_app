@@ -184,6 +184,8 @@ class _TodoPageState extends State<TodoPage> {
                                 hintText: 'Enter your first name',
                                 border: OutlineInputBorder(),
                                 errorStyle: TextStyle(color: Colors.red),
+                                filled: true, // Mengaktifkan warna latar belakang
+                                fillColor: const Color.fromARGB(168, 255, 255, 255),
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
@@ -240,14 +242,19 @@ class _TodoPageState extends State<TodoPage> {
                         child: ListTile(
                           title: Text(
                             listTugas[index]['task'],
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Deadline: ${listTugas[index]['deadline']}',
-                                style: TextStyle(color: const Color.fromARGB(255, 0, 69, 103)),
+                                style: TextStyle(
+                                  color: const Color.fromARGB(255, 0, 69, 103),
+                                ),
                               ),
                               Text(
                                 listTugas[index]['done'] ? 'Done' : 'Not Done',
@@ -255,7 +262,12 @@ class _TodoPageState extends State<TodoPage> {
                                   color:
                                       listTugas[index]['done']
                                           ? const Color.fromARGB(255, 0, 127, 4)
-                                          : const Color.fromARGB(255, 228, 33, 19),
+                                          : const Color.fromARGB(
+                                            255,
+                                            228,
+                                            33,
+                                            19,
+                                          ),
                                 ),
                               ),
                             ],
