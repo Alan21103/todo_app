@@ -15,7 +15,7 @@ class _TodoPageState extends State<TodoPage> {
 
   List<Map<String, dynamic>> listTugas = [];
 
- void addData() {
+  void addData() {
     if (_key.currentState!.validate()) {
       setState(() {
         listTugas.add({
@@ -38,10 +38,41 @@ class _TodoPageState extends State<TodoPage> {
     }
   }
 
+  Future<void> _selectDate(BuildContext context) async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      TimeOfDay? pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
+
+      if (pickedTime != null) {
+        DateTime fullDateTime = DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+
+        setState(() {
+          _dateController.text = DateFormat(
+            'dd-MM-yyyy HH:mm',
+          ).format(fullDateTime);
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     throw UnimplementedError();
   }
 }
-
