@@ -146,9 +146,36 @@ class _TodoPageState extends State<TodoPage> {
                           ),
                         ],
                       ),
+
+                      SizedBox(height: 10),
+                      Text('First Name', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              controller: _taskController,
+                              decoration: InputDecoration(
+                                hintText: 'Enter your first name',
+                                border: OutlineInputBorder(),
+                                errorStyle: TextStyle(color: Colors.red),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty)
+                                  return 'Please enter some text';
+                                return null;
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ), // Jarak an
+                        ],
+                      ),
+                    ],
+            ),
               ),
-              ),
-          ],)
+          ],
+        ),
       ),
     ),
     );
