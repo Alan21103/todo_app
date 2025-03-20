@@ -135,6 +135,7 @@ class _TodoPageState extends State<TodoPage> {
                                     _dateController.text.isEmpty ? 'Select a date' : _dateController.text,
                                     style: GoogleFonts.poppins(
                                       fontSize: 16,
+                                      fontWeight: FontWeight.bold,
                                       color: _dateController.text.isEmpty ? Colors.grey : Colors.black,
                                     ),
                                   ),
